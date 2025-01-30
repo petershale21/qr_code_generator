@@ -1,0 +1,37 @@
+name: Deploy Flutter Web App
+
+on:
+  push:
+    branches:
+      - main # Trigger workflow when changes are pushed to the main branch (adjust as needed)
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Flutter
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: stable
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: flutter pub get
+
+      # Step 4: Build the web app
+      - name: Build Flutter web app
+        run: flutter build web --release
+
+      # Step 5: Deploy to a branch (web)
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build/web
+          publish_branch: web # Change to your desired branch
