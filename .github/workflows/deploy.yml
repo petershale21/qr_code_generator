@@ -26,7 +26,7 @@ jobs:
 
       # Step 4: Build the web app
       - name: Build Flutter web app
-        run: flutter build web --base-href="/web/"
+        run: flutter build web --base-href="/gh-pages/"
 
       # Step 5: Deploy to a branch (web)
       - name: Deploy to GitHub Pages
@@ -34,4 +34,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: build/web
-          publish_branch: web # Change to web branch
+          publish_branch: gh-pages # Change to web branch
