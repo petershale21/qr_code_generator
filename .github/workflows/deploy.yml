@@ -26,7 +26,7 @@ jobs:
 
       # Step 4: Build the web app
       - name: Build Flutter web app
-        run: flutter build web --base-href="/gh-pages/"
+        run: flutter build web --base-href="/qr_code_generator/"
 
       # Step 5: Deploy to a branch (web)
       - name: Deploy to GitHub Pages
